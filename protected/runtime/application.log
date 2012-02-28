@@ -173,3 +173,19 @@ REQUEST_URI=/~mac/simplecrm/
 in /Users/mac/Sites/simplecrm/protected/views/layouts/main.php (50)
 in /Users/mac/Sites/simplecrm/protected/views/layouts/column1.php (5)
 in /Users/mac/Sites/simplecrm/protected/controllers/SiteController.php (32)
+2012/02/27 21:14:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "zii".' in /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php:280
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController('zii')
+#1 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /Users/mac/Sites/simplecrm/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/~mac/simplecrm/index.php?r=zii
+---
+2012/02/27 21:15:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii".' in /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php:280
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController('gii')
+#1 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /Users/mac/Sites/simplecrm/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/~mac/simplecrm/index.php?r=gii
+---

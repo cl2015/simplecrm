@@ -3,3 +3,5 @@ test
 .DS_Store
 .gitignore
 protected/.DS_Store
+/assets/*
+*.log
