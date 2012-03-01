@@ -1,7 +1,8 @@
 test
 *.DS_Store
+
 .DS_Store
-.gitignore
+
 protected/.DS_Store
 /assets/*
 *.log
@@ -14,3 +15,9 @@ themes/.DS_Store
 protected/.DS_Store
 
 assets/.DS_Store
+
+protected/.DS_Store
+
+themes/.DS_Store
+
+.DS_Store
