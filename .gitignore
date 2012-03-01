@@ -5,3 +5,12 @@ test
 protected/.DS_Store
 /assets/*
 *.log
+.DS_Store
+
+*/.DS_Store
+
+themes/.DS_Store
+
+protected/.DS_Store
+
+assets/.DS_Store

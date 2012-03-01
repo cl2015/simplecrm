@@ -189,3 +189,129 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/~mac/simplecrm/index.php?r=gii
 ---
+2012/02/28 16:20:09 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php:422)
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(309): CDbConnection->setActive()
+#2 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(104): CWebApplication->getComponent()
+#4 /Users/mac/Sites/simplecrm/protected/framework/gii/generators/model/ModelCode.php(54): CWebApplication->__get()
+#5 /Users/mac/Sites/simplecrm/protected/framework/web/CFormModel.php(40): ModelCode->init()
+#6 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(152): ModelCode->__construct()
+#7 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(64): ModelGenerator->prepare()
+#8 /Users/mac/Sites/simplecrm/protected/framework/web/actions/CInlineAction.php(50): ModelGenerator->actionIndex()
+#9 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(309): CInlineAction->runWithParams()
+#10 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(287): ModelGenerator->runAction()
+#11 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(266): ModelGenerator->runActionWithFilters()
+#12 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(276): ModelGenerator->run()
+#13 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#14 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Users/mac/Sites/simplecrm/index.php(13): CWebApplication->run()
+REQUEST_URI=/~mac/simplecrm/index.php?r=gii/model
+in /Users/mac/Sites/simplecrm/index.php (13)
+2012/02/28 16:20:59 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php:422)
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(309): CDbConnection->setActive()
+#2 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(104): CWebApplication->getComponent()
+#4 /Users/mac/Sites/simplecrm/protected/framework/gii/generators/model/ModelCode.php(54): CWebApplication->__get()
+#5 /Users/mac/Sites/simplecrm/protected/framework/web/CFormModel.php(40): ModelCode->init()
+#6 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(152): ModelCode->__construct()
+#7 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(64): ModelGenerator->prepare()
+#8 /Users/mac/Sites/simplecrm/protected/framework/web/actions/CInlineAction.php(50): ModelGenerator->actionIndex()
+#9 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(309): CInlineAction->runWithParams()
+#10 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(287): ModelGenerator->runAction()
+#11 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(266): ModelGenerator->runActionWithFilters()
+#12 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(276): ModelGenerator->run()
+#13 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#14 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Users/mac/Sites/simplecrm/index.php(13): CWebApplication->run()
+REQUEST_URI=/~mac/simplecrm/index.php?r=gii/model
+in /Users/mac/Sites/simplecrm/index.php (13)
+2012/02/28 16:21:32 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php:422)
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(309): CDbConnection->setActive()
+#2 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(104): CWebApplication->getComponent()
+#4 /Users/mac/Sites/simplecrm/protected/framework/gii/generators/model/ModelCode.php(54): CWebApplication->__get()
+#5 /Users/mac/Sites/simplecrm/protected/framework/web/CFormModel.php(40): ModelCode->init()
+#6 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(152): ModelCode->__construct()
+#7 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(64): ModelGenerator->prepare()
+#8 /Users/mac/Sites/simplecrm/protected/framework/web/actions/CInlineAction.php(50): ModelGenerator->actionIndex()
+#9 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(309): CInlineAction->runWithParams()
+#10 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(287): ModelGenerator->runAction()
+#11 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(266): ModelGenerator->runActionWithFilters()
+#12 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(276): ModelGenerator->run()
+#13 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#14 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Users/mac/Sites/simplecrm/index.php(13): CWebApplication->run()
+REQUEST_URI=/~mac/simplecrm/index.php?r=gii/model
+in /Users/mac/Sites/simplecrm/index.php (13)
+2012/02/28 16:21:42 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php:422)
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(309): CDbConnection->setActive()
+#2 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(104): CWebApplication->getComponent()
+#4 /Users/mac/Sites/simplecrm/protected/framework/gii/generators/model/ModelCode.php(54): CWebApplication->__get()
+#5 /Users/mac/Sites/simplecrm/protected/framework/web/CFormModel.php(40): ModelCode->init()
+#6 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(152): ModelCode->__construct()
+#7 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(64): ModelGenerator->prepare()
+#8 /Users/mac/Sites/simplecrm/protected/framework/web/actions/CInlineAction.php(50): ModelGenerator->actionIndex()
+#9 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(309): CInlineAction->runWithParams()
+#10 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(287): ModelGenerator->runAction()
+#11 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(266): ModelGenerator->runActionWithFilters()
+#12 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(276): ModelGenerator->run()
+#13 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#14 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Users/mac/Sites/simplecrm/index.php(13): CWebApplication->run()
+REQUEST_URI=/~mac/simplecrm/index.php?r=gii/model
+in /Users/mac/Sites/simplecrm/index.php (13)
+2012/02/28 16:25:34 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php:422)
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Users/mac/Sites/simplecrm/protected/framework/db/CDbConnection.php(309): CDbConnection->setActive()
+#2 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Users/mac/Sites/simplecrm/protected/framework/base/CModule.php(104): CWebApplication->getComponent()
+#4 /Users/mac/Sites/simplecrm/protected/framework/gii/generators/model/ModelCode.php(54): CWebApplication->__get()
+#5 /Users/mac/Sites/simplecrm/protected/framework/web/CFormModel.php(40): ModelCode->init()
+#6 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(152): ModelCode->__construct()
+#7 /Users/mac/Sites/simplecrm/protected/framework/gii/CCodeGenerator.php(64): ModelGenerator->prepare()
+#8 /Users/mac/Sites/simplecrm/protected/framework/web/actions/CInlineAction.php(50): ModelGenerator->actionIndex()
+#9 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(309): CInlineAction->runWithParams()
+#10 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(287): ModelGenerator->runAction()
+#11 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(266): ModelGenerator->runActionWithFilters()
+#12 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(276): ModelGenerator->run()
+#13 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#14 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Users/mac/Sites/simplecrm/index.php(13): CWebApplication->run()
+REQUEST_URI=/~mac/simplecrm/index.php?r=gii/model
+in /Users/mac/Sites/simplecrm/index.php (13)
+2012/02/28 16:26:55 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sinaminisite.user' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `user`.
+in /Users/mac/Sites/simplecrm/index.php (13)
+2012/02/28 16:36:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "users".' in /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php:280
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController('users')
+#1 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /Users/mac/Sites/simplecrm/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/~mac/simplecrm/index.php?r=users
+---
+2012/02/29 17:53:52 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "sendMail".' in /Users/mac/Sites/simplecrm/protected/framework/base/CComponent.php:266
+Stack trace:
+#0 /Users/mac/Sites/simplecrm/protected/controllers/SiteController.php(54): CComponent->__call('sendMail', Array)
+#1 /Users/mac/Sites/simplecrm/protected/controllers/SiteController.php(54): SiteController->sendMail('li.he@brightac....', '')
+#2 /Users/mac/Sites/simplecrm/protected/framework/web/actions/CInlineAction.php(50): SiteController->actionContact()
+#3 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#4 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#5 /Users/mac/Sites/simplecrm/protected/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(276): CController->run('contact')
+#7 /Users/mac/Sites/simplecrm/protected/framework/web/CWebApplication.php(135): CWebApplication->runController('site/contact')
+#8 /Users/mac/Sites/simplecrm/protected/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#9 /Users/mac/Sites/simplecrm/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/~mac/simplecrm/index.php?r=site/contact
+HTTP_REFERER=http://localhost/~mac/simplecrm/
+---

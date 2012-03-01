@@ -20,14 +20,14 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		/*
+		
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'Enter Your Password Here',
 		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		*/
+		
 	),
 
 	// application components
@@ -46,20 +46,23 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		*/
+		 */
+		/*
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
+		 */
 		// uncomment the following to use a MySQL database
-		/*
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+		
+	   'db'=>array(
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=sinaminisite',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'dev',
+			'password' => 'dev',
 			'charset' => 'utf8',
+			'tablePrefix' => '',
 		),
-		*/
+		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
@@ -79,6 +82,12 @@ return array(
 				*/
 			),
 		),
+		'mailer' => array(
+			'class' => 'application.extensions.mailer.EMailer',
+		    'pathViews' => 'application.views.email',
+			'pathLayouts' => 'application.views.email.layouts'
+		),
+
 	),
 
 	// application-level parameters that can be accessed
@@ -86,11 +95,5 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-	),
-	'modules'=>array(
-			'gii'=>array(
-					'class'=>'system.gii.GiiModule',
-					'password'=>'[htdoc]',
-			),
 	),
 );
