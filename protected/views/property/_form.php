@@ -1,0 +1,72 @@
+<div class="form">
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'property-form',
+	'enableAjaxValidation'=>false,
+)); ?>
+
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
+
+	<?php echo $form->errorSummary($model); ?>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'code'); ?>
+		<?php echo $form->textField($model,'code',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->error($model,'code'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'address'); ?>
+		<?php echo $form->textField($model,'address',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->error($model,'address'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'area'); ?>
+		<?php echo $form->textField($model,'area',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->error($model,'area'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'unit_price'); ?>
+		<?php echo $form->textField($model,'unit_price',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->error($model,'unit_price'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'age'); ?>
+		<?php echo $form->textField($model,'age',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->error($model,'age'); ?>
+	</div>
+<?php /*
+	<div class="row">
+		<?php echo $form->labelEx($model,'created_at'); ?>
+		<?php echo $form->textField($model,'created_at'); ?>
+		<?php echo $form->error($model,'created_at'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'created_by'); ?>
+		<?php echo $form->textField($model,'created_by'); ?>
+		<?php echo $form->error($model,'created_by'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'updated_at'); ?>
+		<?php echo $form->textField($model,'updated_at'); ?>
+		<?php echo $form->error($model,'updated_at'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'updated_by'); ?>
+		<?php echo $form->textField($model,'updated_by'); ?>
+		<?php echo $form->error($model,'updated_by'); ?>
+	</div>
+ */?>
+	<div class="row buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	</div>
+
+<?php $this->endWidget(); ?>
+
+</div><!-- form -->
