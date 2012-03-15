@@ -1,0 +1,1 @@
+<ul>     <?php foreach($this->getRecentHistories() as $history): ?>    <div class="author">         <?php echo $history->creater->username; ?> 更新了合同.    </div>     <div class="issue">        <?php echo CHtml::link(CHtml::encode($history->statuses->status),                array('history/view', 'id'=>$history->id)); ?>    </div>     <?php endforeach; ?></ul>

@@ -43,6 +43,11 @@
 		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'content'); ?>
 	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'remark'); ?>
+		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'remark'); ?>
+	</div>
 <?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'created_at'); ?>
