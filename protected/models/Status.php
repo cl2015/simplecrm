@@ -39,13 +39,13 @@ class Status extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('status', 'required'),
-			array('created_by, updated_by', 'numerical', 'integerOnly'=>true),
-			array('status', 'length', 'max'=>128),
-			array('created_at, updated_at', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, status, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
+				array('status', 'required'),
+				array('created_by, updated_by', 'numerical', 'integerOnly'=>true),
+				array('status', 'length', 'max'=>128),
+				array('created_at, updated_at', 'safe'),
+				// The following rule is used by search().
+				// Please remove those attributes that should not be searched.
+				array('id, status, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +57,7 @@ class Status extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'contract' => array(self::MANY_MANY,'Contract','contract_status(contract_id,status_id)'),
+				'contract' => array(self::MANY_MANY,'Contract','contract_status(contract_id,status_id)'),
 		);
 	}
 
@@ -67,12 +67,12 @@ class Status extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'status' => 'Status',
-			'created_at' => 'Created At',
-			'created_by' => 'Created By',
-			'updated_at' => 'Updated At',
-			'updated_by' => 'Updated By',
+				'id' => 'ID',
+				'status' => '合同状态',
+				'created_at' => '创建时间',
+				'created_by' => '创建人',
+				'updated_at' => '更新时间',
+				'updated_by' => '更新人',
 		);
 	}
 
@@ -95,7 +95,7 @@ class Status extends CActiveRecord
 		$criteria->compare('updated_by',$this->updated_by);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+				'criteria'=>$criteria,
 		));
 	}
 }

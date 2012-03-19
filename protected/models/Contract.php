@@ -47,9 +47,11 @@ class Contract extends TrackStarActiveRecord
 		// will receive user inputs.
 		return array(
 				array('customer_id, amount, contract_number, content', 'required'),
+				array('customer_id, amount, contract_number, content', 'safe','on'=>'create'),
 				array('amount, contract_number', 'length', 'max'=>128),
 				array('created_at, updated_at,remark', 'safe'),
-				//array('status','flowCheck','check'=>true),
+				array('customer_id,amount,contract_number,content','unsafe','on'=>'update'),
+				array('status','flowCheck','check'=>true),
 				// The following rule is used by search().
 				// Please remove those attributes that should not be searched.
 				array('id, customer_id, amount, contract_number,content, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
@@ -79,9 +81,10 @@ class Contract extends TrackStarActiveRecord
 	{
 		return array(
 				'id' => 'ID',
-				'customer_id' => 'Customer',
+				'customer_id' => '客户',
 				'amount' => '金额',
 				'contract_number' => '合同编号',
+				'statuses' =>'状态',
 				'content' => '内容',
 				'remark' =>'更新记录',
 				'created_at' => '创建日期',
@@ -200,7 +203,6 @@ class Contract extends TrackStarActiveRecord
 
 	public function afterSave(){
 		if(parent::afterSave()){
-			
 		}
 		$this->saveHistory();
 		return true;

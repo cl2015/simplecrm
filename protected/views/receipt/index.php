@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'员工列表',
+	'Receipts',
 );
 
 $this->menu=array(
-	array('label'=>'新增员工', 'url'=>array('create')),
-	array('label'=>'管理员工', 'url'=>array('admin')),
+	array('label'=>'Create Receipt', 'url'=>array('create')),
+	array('label'=>'Manage Receipt', 'url'=>array('admin')),
 );
 ?>
 
-<h1>员工列表</h1>
+<h1>Receipts</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

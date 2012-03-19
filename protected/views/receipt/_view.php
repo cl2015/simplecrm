@@ -4,28 +4,24 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('contract_id')); ?>:</b>
+	<?php echo CHtml::encode($data->contract_id); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('receipts_date')); ?>:</b>
+	<?php echo CHtml::encode($data->receipts_date); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('amount')); ?>:</b>
+	<?php echo CHtml::encode($data->amount); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('code')); ?>:</b>
 	<?php echo CHtml::encode($data->code); ?>
 	<br />
-	
-	<b><?php echo CHtml::encode($data->getAttributeLabel('region')); ?>:</b>
-	<?php echo CHtml::encode($data->region); ?>
-	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('address')); ?>:</b>
-	<?php echo CHtml::encode($data->address); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('area')); ?>:</b>
-	<?php echo CHtml::encode($data->area); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('unit_price')); ?>:</b>
-	<?php echo CHtml::encode($data->unit_price); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('age')); ?>:</b>
-	<?php echo CHtml::encode($data->age); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('content')); ?>:</b>
+	<?php echo CHtml::encode($data->content); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('created_at')); ?>:</b>

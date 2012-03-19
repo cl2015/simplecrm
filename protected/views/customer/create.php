@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Customers'=>array('index'),
-	'Create',
+	'客户'=>array('index'),
+	'新增',
 );
 
 $this->menu=array(
-	array('label'=>'List Customer', 'url'=>array('index')),
-	array('label'=>'Manage Customer', 'url'=>array('admin')),
+	array('label'=>'客户列表', 'url'=>array('index')),
+	array('label'=>'管理客户', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Customer</h1>
+<h1>新增客户</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

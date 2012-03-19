@@ -48,15 +48,15 @@ class User extends TrackStarActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, code, name, birthday, phone, email, job_title', 'required'),
-			array('username, job_title, superior, department', 'length', 'max'=>64),
-			array('password, phone, email', 'length', 'max'=>128),
-			array('code, name, birthday', 'length', 'max'=>10),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, username, password, code, name, birthday, phone, email, job_title, superior, department, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
-			array('email, username', 'unique'),
-			array('email','email'),
+				array('username, password, code, name, birthday, phone, email, job_title', 'required'),
+				array('username, job_title, superior, department', 'length', 'max'=>64),
+				array('password, phone, email', 'length', 'max'=>128),
+				array('code, name, birthday', 'length', 'max'=>10),
+				// The following rule is used by search().
+				// Please remove those attributes that should not be searched.
+				array('id, username, password, code, name, birthday, phone, email, job_title, superior, department, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
+				array('email, username', 'unique'),
+				array('email','email'),
 		);
 	}
 
@@ -68,6 +68,8 @@ class User extends TrackStarActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+				'creater' => array(self::BELONGS_TO,'User','created_by'),
+				'updater' => array(self::BELONGS_TO,'User','updated_by'),
 		);
 	}
 
@@ -77,21 +79,21 @@ class User extends TrackStarActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'username' => 'Username',
-			'password' => 'Password',
-			'code' => 'Code',
-			'name' => 'Name',
-			'birthday' => 'Birthday',
-			'phone' => 'Phone',
-			'email' => 'Email',
-			'job_title' => 'Job Title',
-			'superior' => 'Superior',
-			'department' => 'Department',
-			'created_at' => 'Created At',
-			'created_by' => 'Created By',
-			'updated_at' => 'Updated At',
-			'updated_by' => 'Updated By',
+				'id' => 'ID',
+				'username' => '用户名',
+				'password' => '密码',
+				'code' => '员工编号',
+				'name' => '姓名',
+				'birthday' => '生日',
+				'phone' => '电话',
+				'email' => '邮件',
+				'job_title' => '职位',
+				'superior' => '领导',
+				'department' => '部门',
+				'created_at' => '创建时间',
+				'created_by' => '创建人',
+				'updated_at' => '更新时间',
+				'updated_by' => '更新人',
 		);
 	}
 
@@ -123,7 +125,7 @@ class User extends TrackStarActiveRecord
 		$criteria->compare('updated_by',$this->updated_by);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+				'criteria'=>$criteria,
 		));
 	}
 	/**

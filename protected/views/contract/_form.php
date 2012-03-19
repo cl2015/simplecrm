@@ -30,7 +30,7 @@
 	?>
 
 	<div class="row" id="checkbox">
-		<?php echo $form->labelEx($model,'status'); ?>
+		<?php echo $form->labelEx($model,'statuses'); ?>
 		<?php //echo $form->checkboxList($model,'status',$model->getStatusOptions()); ?>
 		<ul class="checkbox"><?php echo CHtml::CheckBoxList('Status',$selected_statuses,Chtml::listData(Status::model()->findAll(),'id','status'),array('separator'=>'','template'=>'<li>{input} {label}</li>'));?>
 		</ul>

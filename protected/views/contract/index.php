@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Contracts',
+	'合同',
 );
 
 $this->menu=array(
 	//array('label'=>'Create Contract', 'url'=>array('create')),
-	array('label'=>'Manage Contract', 'url'=>array('admin')),
+	array('label'=>'合同管理', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Contracts</h1>
+<h1>合同</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

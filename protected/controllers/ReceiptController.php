@@ -1,6 +1,6 @@
 <?php
 
-class HistoryController extends Controller
+class ReceiptController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,10 +28,10 @@ class HistoryController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('view','create'),
+				'actions'=>array('create'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -59,18 +59,18 @@ class HistoryController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($contract_id)
 	{
-		$model=new History;
-
+		$model=new Receipt;
+		$model->contract_id = $contract_id;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['History']))
+		if(isset($_POST['Receipt']))
 		{
-			$model->attributes=$_POST['History'];
+			$model->attributes=$_POST['Receipt'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('contract/view','id'=>$model->contract_id));
 		}
 
 		$this->render('create',array(
@@ -90,9 +90,9 @@ class HistoryController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['History']))
+		if(isset($_POST['Receipt']))
 		{
-			$model->attributes=$_POST['History'];
+			$model->attributes=$_POST['Receipt'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -127,7 +127,7 @@ class HistoryController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('History');
+		$dataProvider=new CActiveDataProvider('Receipt');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -138,10 +138,10 @@ class HistoryController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new History('search');
+		$model=new Receipt('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['History']))
-			$model->attributes=$_GET['History'];
+		if(isset($_GET['Receipt']))
+			$model->attributes=$_GET['Receipt'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,7 +155,7 @@ class HistoryController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=History::model()->findByPk($id);
+		$model=Receipt::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -167,7 +167,7 @@ class HistoryController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='history-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='receipt-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

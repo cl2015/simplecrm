@@ -37,7 +37,7 @@ class ContractController extends Controller
 		'users'=>array('@'),
 	),
 	array('allow', // allow admin user to perform 'admin' and 'delete' actions
-	'actions'=>array('admin','delete'),
+	'actions'=>array('admin'),
 	'users'=>array('admin'),
 ),
 array('deny',  // deny all users
@@ -89,6 +89,7 @@ array('deny',  // deny all users
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$model->setScenario('update');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
