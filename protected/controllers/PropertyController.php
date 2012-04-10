@@ -14,7 +14,7 @@ class PropertyController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
+				'accessControl', // perform access control for CRUD operations
 		);
 	}
 
@@ -26,21 +26,22 @@ class PropertyController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','update'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
+				array('allow',  // allow all users to perform 'index' and 'view' actions
+						'actions'=>array('index','view'),
+						'users'=>array('@'),
+				),
+				array('allow', // allow authenticated user to perform 'create' and 'update' actions
+						'actions'=>array('create','update'),
+						'users'=>array('@'),
+				),
+				array('allow', // allow admin user to perform 'admin' and 'delete' actions
+						'actions'=>array('admin','update','delete'),
+						'users'=>array('@'),
+						'expression' => '$user->isRoot',
+				),
+				array('deny',  // deny all users
+						'users'=>array('*'),
+				),
 		);
 	}
 
@@ -51,16 +52,16 @@ class PropertyController extends Controller
 	public function actionView($id)
 	{
 		$fileDataProvider = new CActiveDataProvider('File', array(
-                'criteria' => array(
-                    'condition' => 'property_id=:propertyId',
-                    'params' => array(
-                        ':propertyId' => $id),
-                ),
-                'pagination' => array('pageSize' => 1),
-    ));
+				'criteria' => array(
+						'condition' => 'property_id=:propertyId',
+						'params' => array(
+								':propertyId' => $id),
+				),
+				'pagination' => array('pageSize' => 1),
+		));
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			'fileDataProvider'=>$fileDataProvider,
+				'model'=>$this->loadModel($id),
+				'fileDataProvider'=>$fileDataProvider,
 		));
 	}
 
@@ -83,7 +84,7 @@ class PropertyController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 
@@ -107,7 +108,7 @@ class PropertyController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 
@@ -138,7 +139,7 @@ class PropertyController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('Property');
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+				'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -153,7 +154,7 @@ class PropertyController extends Controller
 			$model->attributes=$_GET['Property'];
 
 		$this->render('admin',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 

@@ -50,7 +50,7 @@ class Contract extends TrackStarActiveRecord
 				array('customer_id, amount, contract_number, content', 'safe','on'=>'create'),
 				array('amount, contract_number', 'length', 'max'=>128),
 				array('created_at, updated_at,remark', 'safe'),
-				array('customer_id,amount,contract_number,content','unsafe','on'=>'update'),
+				array('customer_id,amount,contract_number,content','safe','on'=>'update'),
 				array('status','flowCheck','check'=>true),
 				// The following rule is used by search().
 				// Please remove those attributes that should not be searched.
@@ -82,7 +82,7 @@ class Contract extends TrackStarActiveRecord
 		return array(
 				'id' => 'ID',
 				'customer_id' => '客户',
-				'amount' => '金额',
+				'amount' => '贷款金额',
 				'contract_number' => '合同编号',
 				'statuses' =>'状态',
 				'content' => '内容',

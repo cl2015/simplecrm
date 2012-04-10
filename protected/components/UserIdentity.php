@@ -8,6 +8,10 @@
 class UserIdentity extends CUserIdentity
 {
 	private $_id;
+	private $_isRoot; //是否具有管理权限
+	private $_isManager; //是否是经理
+	private $_isEmployee; //是否是员工
+	
 
 	/**
 	 * Authenticates a user using the User data model.
@@ -15,13 +19,24 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate() {
 		$user = User::model()->findByAttributes(array('username' => $this->username));
+		var_dump($user->password);
+		var_dump($user->encrypt($this->password));
 		if ($user === null) {
 			$this->errorCode = self::ERROR_USERNAME_INVALID;
 		} else {
 			if ($user->password !== $user->encrypt($this->password)) {
-				$this->errorCode = self::ERROR_PASSWORD_INVALID;
+				//$this->errorCode = self::ERROR_PASSWORD_INVALID;
+				$this->errorCode = $user->password . $user->encrypt($this->password);
 			} else {
 				$this->_id = $user->id;
+				$isRoot = ($user->role_id == User::USER_ROOT) ? 1 : 0;
+				$isManager = ($user->role_id == User::USER_MANAGER) ? 1:0;
+				$isEmployee = ($user->role_id == User::USER_EMPLOYEE)? 1 : 0;
+				Yii::trace('isXXX-' . $isRoot . '-' . $isManager . '-' . $isEmployee);
+				$this->setState('isRoot', $isRoot);
+				$this->setState('isManager', $isManager);
+				$this->setState('isEmployee', $isEmployee);
+				$this->setState('group_id',$user->group_id);
 				$this->errorCode = self::ERROR_NONE;
 			}
 		}

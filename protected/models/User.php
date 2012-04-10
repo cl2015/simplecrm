@@ -22,6 +22,10 @@
  */
 class User extends TrackStarActiveRecord
 {
+	const USER_ROOT = 3;
+	const USER_MANAGER = 2;
+	const USER_EMPLOYEE = 1;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -48,7 +52,7 @@ class User extends TrackStarActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-				array('username, password, code, name, birthday, phone, email, job_title', 'required'),
+				array('username, password, code, name, birthday, phone, email, job_title,role_id,group_id', 'required'),
 				array('username, job_title, superior, department', 'length', 'max'=>64),
 				array('password, phone, email', 'length', 'max'=>128),
 				array('code, name, birthday', 'length', 'max'=>10),
@@ -83,6 +87,8 @@ class User extends TrackStarActiveRecord
 				'username' => '用户名',
 				'password' => '密码',
 				'code' => '员工编号',
+				'role_id'=>'角色',
+				'group_id'=>'分组',
 				'name' => '姓名',
 				'birthday' => '生日',
 				'phone' => '电话',
@@ -111,6 +117,8 @@ class User extends TrackStarActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
+		$criteria->compare('role_id',$this->role_id,true);
+		$criteria->compare('group_id',$this->group_id,true);
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('birthday',$this->birthday,true);
@@ -137,5 +145,12 @@ class User extends TrackStarActiveRecord
 	}
 	public function encrypt($value) {
 		return md5($value);
+	}
+	
+	public function getRoles(){
+		return array(3=>'管理员',2=>'经理',1=>'员工');
+	}
+	public function getGroups(){
+		return array(1=>'员工一组',2=>'员工二组',0=>'管理员组');
 	}
 }

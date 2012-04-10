@@ -32,11 +32,13 @@ class UserController extends Controller
 				),
 				array('allow', // allow authenticated user to perform 'create' and 'update' actions
 						'actions'=>array('create','update'),
-						'users'=>array('admin'),
+						'users'=>array('@'),
+						'expression' => '$user->isRoot',
 				),
 				array('allow', // allow admin user to perform 'admin' and 'delete' actions
 						'actions'=>array('admin','delete'),
-						'users'=>array('admin'),
+						'users'=>array('@'),
+						'expression' => '$user->isRoot',
 				),
 				array('deny',  // deny all users
 						'users'=>array('*'),

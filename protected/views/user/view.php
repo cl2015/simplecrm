@@ -17,7 +17,10 @@ $this->menu=array(
 	查看员工
 	<?php echo $model->name; ?>
 </h1>
-
+<?php 
+$roles = User::model()->getRoles();
+$groups = User::model()->getGroups();
+?>
 <?php $this->widget('zii.widgets.CDetailView', array(
 		'data'=>$model,
 		'attributes'=>array(
@@ -25,6 +28,14 @@ $this->menu=array(
 				'username',
 				//'password',
 				'code',
+				array('label'=>$model->getAttributeLabel('role_id'),
+						'type'=>'raw',
+						'value'=>$roles[$model->role_id],
+				),
+				array('label'=>$model->getAttributeLabel('group_id'),
+						'type'=>'raw',
+						'value'=>$groups[$model->group_id],
+				),
 				'name',
 				'birthday',
 				'phone',
