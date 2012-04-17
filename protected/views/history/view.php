@@ -1,7 +1,8 @@
 <?php
 $this->breadcrumbs=array(
-	'合同进程'=>array('index'),
-	$model->id,
+		'合同'=>array('contract/index'),
+		$model->contract_id=>array('contract/view','id'=>$model->contract_id),
+		$model->id,
 );
 
 // $this->menu=array(
@@ -13,18 +14,21 @@ $this->breadcrumbs=array(
 // );
 ?>
 
-<h1>查看合同进程 #<?php echo $model->id; ?></h1>
+<h1>
+	查看合同进程 #
+	<?php echo $model->id; ?>
+</h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'contract_id',
-		'status',
-		'remark',
-		'created_at',
-		'created_by',
-		'updated_at',
-		'updated_by',
-	),
+		'data'=>$model,
+		'attributes'=>array(
+				'id',
+				'contract_id',
+				'status',
+				'remark',
+				'created_at',
+				'creater.username',
+				'updated_at',
+				'updater.username'		,
+		),
 )); ?>

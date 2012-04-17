@@ -105,16 +105,28 @@ class Contract extends TrackStarActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('customer_id',$this->customer_id);
-		$criteria->compare('amount',$this->amount,true);
-		$criteria->compare('contract_number',$this->contract_number,true);
-		$criteria->compare('content',$this->content,true);
-		$criteria->compare('created_at',$this->created_at,true);
-		$criteria->compare('created_by',$this->created_by);
-		$criteria->compare('updated_at',$this->updated_at,true);
-		$criteria->compare('updated_by',$this->updated_by);
+		$criteria->compare('t.id',$this->id,true);
+		$criteria->compare('t.customer_id',$this->customer_id);
+		$criteria->compare('t.amount',$this->amount,true);
+		$criteria->compare('t.contract_number',$this->contract_number,true);
+		$criteria->compare('t.content',$this->content,true);
+		$criteria->compare('t.created_at',$this->created_at,true);
+		$criteria->compare('t.created_by',$this->created_by);
+		$criteria->compare('t.updated_at',$this->updated_at,true);
+		$criteria->compare('t.updated_by',$this->updated_by);
 
+		if(Yii::app()->user->isRoot){
+				
+		}elseif ( Yii::app()->user->isManager ) {
+			$criteria->with = array(
+					'creater' => array(
+							'on'=>"creater.group_id = " . Yii::app()->user->group_id,
+							'joinType' => 'INNER JOIN',
+					),
+			);
+		}else{
+			$criteria->compare('t.created_by',Yii::app()->user->id);
+		}
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
 		));
@@ -194,7 +206,7 @@ class Contract extends TrackStarActiveRecord
 		}
 		return true;
 	}
-	
+
 	public function afterFind(){
 		foreach($this->statuses as $status) {
 			array_push($this->_oldStatuses, $status->id);
@@ -213,12 +225,20 @@ class Contract extends TrackStarActiveRecord
 			array_push($statuses, $status->id);
 		}
 		$logStatus = array_diff($statuses, $this->_oldStatuses);
-		foreach ($logStatus as $status){
+		if(count($logStatus)==0){
 			$history = new History();
-			$history->status = $status;
+			$history->status = 0;
 			$history->contract_id = $this->id;
 			$history->remark = $this->remark;
-			$history->save();
+			$history->save();		
+		}else{
+			foreach ($logStatus as $status){
+				$history = new History();
+				$history->status = $status;
+				$history->contract_id = $this->id;
+				$history->remark = $this->remark;
+				$history->save();
+			}
 		}
 	}
 

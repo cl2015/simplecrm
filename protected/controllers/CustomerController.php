@@ -133,7 +133,23 @@ class CustomerController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Customer');
+		$criteria = new CDbCriteria();
+		if(Yii::app()->user->isRoot){
+		
+		}elseif ( Yii::app()->user->isManager ) {
+			$criteria->with = array(
+					'creater' => array(
+							'on'=>"creater.group_id = :group_id  AND creater.id = t.created_by",
+							'joinType' => 'INNER JOIN',
+					),
+			);
+			$criteria->params = array(':group_id'=>Yii::app()->user->group_id);
+		}else{
+			$criteria->condition = "created_by = :user_id";
+			$criteria->params = array('user_id'=>Yii::app()->user->id);
+		}
+		$dataProvider=new CActiveDataProvider('Customer',
+				array('criteria'=>$criteria));
 		$this->render('index',array(
 				'dataProvider'=>$dataProvider,
 		));

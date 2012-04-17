@@ -100,17 +100,29 @@ class Customer extends TrackStarActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('id_card',$this->id_card,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('phone',$this->phone,true);
-		$criteria->compare('address',$this->address,true);
-		$criteria->compare('source',$this->source,true);
-		$criteria->compare('created_at',$this->created_at,true);
-		$criteria->compare('created_by',$this->created_by);
-		$criteria->compare('updated_at',$this->updated_at,true);
-		$criteria->compare('updated_by',$this->updated_by);
-
+		$criteria->compare('t.id',$this->id,true);
+		$criteria->compare('t.id_card',$this->id_card,true);
+		$criteria->compare('t.name',$this->name,true);
+		$criteria->compare('t.phone',$this->phone,true);
+		$criteria->compare('t.address',$this->address,true);
+		$criteria->compare('t.source',$this->source,true);
+		$criteria->compare('t.created_at',$this->created_at,true);
+		$criteria->compare('t.created_by',$this->created_by);
+		$criteria->compare('t.updated_at',$this->updated_at,true);
+		$criteria->compare('t.updated_by',$this->updated_by);
+		
+		if(Yii::app()->user->isRoot){
+		
+		}elseif ( Yii::app()->user->isManager ) {
+			$criteria->with = array(
+					'creater' => array(
+							'on'=>"creater.group_id = " .Yii::app()->user->group_id,
+							'joinType' => 'INNER JOIN',
+					),
+			);
+		}else{
+			$criteria->compare('t.created_by',Yii::app()->user->id);
+		}
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

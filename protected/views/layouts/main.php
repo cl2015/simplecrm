@@ -31,7 +31,7 @@
 				array('label'=>'主页', 'url'=>array('/site/index')),
 				array('label'=>'客户信息管理', 'url'=>array('customer/admin')),
 				array('label'=>'物业信息管理', 'url'=>array('property/index')),
-				array('label'=>'合同信息管理', 'url'=>array('contract/index')),
+				array('label'=>'合同信息管理', 'url'=>array('contract/admin')),
 				array('label'=>'员工信息管理', 'url'=>array('user/index')),
 				array('label'=>'登录', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'退出 ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

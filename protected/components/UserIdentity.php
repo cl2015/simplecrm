@@ -19,13 +19,10 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate() {
 		$user = User::model()->findByAttributes(array('username' => $this->username));
-		var_dump($user->password);
-		var_dump($user->encrypt($this->password));
 		if ($user === null) {
 			$this->errorCode = self::ERROR_USERNAME_INVALID;
 		} else {
 			if ($user->password !== $user->encrypt($this->password)) {
-				//$this->errorCode = self::ERROR_PASSWORD_INVALID;
 				$this->errorCode = $user->password . $user->encrypt($this->password);
 			} else {
 				$this->_id = $user->id;
