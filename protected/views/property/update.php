@@ -1,19 +1,19 @@
 <?php
 $this->breadcrumbs=array(
-	'Properties'=>array('index'),
+	'物业'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'更新',
 );
 
 $this->menu=array(
-	array('label'=>'List Property', 'url'=>array('index')),
-	array('label'=>'Create Property', 'url'=>array('create')),
-	array('label'=>'View Property', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Property', 'url'=>array('admin')),
+	array('label'=>'物业列表', 'url'=>array('index')),
+	array('label'=>'新增物业', 'url'=>array('create')),
+	array('label'=>'查看物业', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'管理物业', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Property <?php echo $model->id; ?></h1>
+<h1>更新物业 <?php echo $model->id; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 <?php 

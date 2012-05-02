@@ -22,6 +22,10 @@
  */
 class User extends TrackStarActiveRecord
 {
+	const USER_ROOT = 3;
+	const USER_MANAGER = 2;
+	const USER_EMPLOYEE = 1;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -48,15 +52,15 @@ class User extends TrackStarActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, code, name, birthday, phone, email, job_title', 'required'),
-			array('username, job_title, superior, department', 'length', 'max'=>64),
-			array('password, phone, email', 'length', 'max'=>128),
-			array('code, name, birthday', 'length', 'max'=>10),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, username, password, code, name, birthday, phone, email, job_title, superior, department, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
-			array('email, username', 'unique'),
-			array('email','email'),
+				array('username, password, code, name, birthday, phone, email, job_title,role_id,group_id', 'required'),
+				array('username, job_title, superior, department', 'length', 'max'=>64),
+				array('password, phone, email', 'length', 'max'=>128),
+				array('code, name, birthday', 'length', 'max'=>10),
+				// The following rule is used by search().
+				// Please remove those attributes that should not be searched.
+				array('id, username, password, code, name, birthday, phone, email, job_title, superior, department, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
+				array('email, username', 'unique'),
+				array('email','email'),
 		);
 	}
 
@@ -68,6 +72,8 @@ class User extends TrackStarActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+				'creater' => array(self::BELONGS_TO,'User','created_by'),
+				'updater' => array(self::BELONGS_TO,'User','updated_by'),
 		);
 	}
 
@@ -77,21 +83,23 @@ class User extends TrackStarActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'username' => 'Username',
-			'password' => 'Password',
-			'code' => 'Code',
-			'name' => 'Name',
-			'birthday' => 'Birthday',
-			'phone' => 'Phone',
-			'email' => 'Email',
-			'job_title' => 'Job Title',
-			'superior' => 'Superior',
-			'department' => 'Department',
-			'created_at' => 'Created At',
-			'created_by' => 'Created By',
-			'updated_at' => 'Updated At',
-			'updated_by' => 'Updated By',
+				'id' => 'ID',
+				'username' => '用户名',
+				'password' => '密码',
+				'code' => '员工编号',
+				'role_id'=>'角色',
+				'group_id'=>'分组',
+				'name' => '姓名',
+				'birthday' => '生日',
+				'phone' => '电话',
+				'email' => '邮件',
+				'job_title' => '职位',
+				'superior' => '领导',
+				'department' => '部门',
+				'created_at' => '创建时间',
+				'created_by' => '创建人',
+				'updated_at' => '更新时间',
+				'updated_by' => '更新人',
 		);
 	}
 
@@ -109,6 +117,8 @@ class User extends TrackStarActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
+		$criteria->compare('role_id',$this->role_id,true);
+		$criteria->compare('group_id',$this->group_id,true);
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('birthday',$this->birthday,true);
@@ -123,7 +133,7 @@ class User extends TrackStarActiveRecord
 		$criteria->compare('updated_by',$this->updated_by);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+				'criteria'=>$criteria,
 		));
 	}
 	/**
@@ -135,5 +145,12 @@ class User extends TrackStarActiveRecord
 	}
 	public function encrypt($value) {
 		return md5($value);
+	}
+	
+	public function getRoles(){
+		return array(3=>'管理员',2=>'经理',1=>'员工');
+	}
+	public function getGroups(){
+		return array(1=>'员工一组',2=>'员工二组',0=>'管理员组');
 	}
 }

@@ -15,8 +15,8 @@ class ContractController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'customerContext + create', //check to ensure valid customer context
+				'accessControl', // perform access control for CRUD operations
+				'customerContext + create', //check to ensure valid customer context
 		);
 	}
 
@@ -28,21 +28,22 @@ class ContractController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-			'actions'=>array('index','view'),
-			'users'=>array('@'),
-		),
-		array('allow', // allow authenticated user to perform 'create' and 'update' actions
-		'actions'=>array('create','update'),
-		'users'=>array('@'),
-	),
-	array('allow', // allow admin user to perform 'admin' and 'delete' actions
-	'actions'=>array('admin','delete'),
-	'users'=>array('admin'),
-),
-array('deny',  // deny all users
-'users'=>array('*'),
-			),
+				array('allow',  // allow all users to perform 'index' and 'view' actions
+						'actions'=>array('index','view','admin'),
+						'users'=>array('@'),
+				),
+				array('allow', // allow authenticated user to perform 'create' and 'update' actions
+						'actions'=>array('create','update'),
+						'users'=>array('@'),
+				),
+				array('allow', // allow admin user to perform 'admin' and 'delete' actions
+						'actions'=>array('admin','delete'),
+						'users'=>array('@'),
+						'expression' => '$user->isRoot'
+				),
+				array('deny',  // deny all users
+						'users'=>array('*'),
+				),
 		);
 	}
 
@@ -53,7 +54,7 @@ array('deny',  // deny all users
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+				'model'=>$this->loadModel($id),
 		));
 	}
 
@@ -77,7 +78,7 @@ array('deny',  // deny all users
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 
@@ -89,6 +90,7 @@ array('deny',  // deny all users
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$model->setScenario('update');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -102,7 +104,7 @@ array('deny',  // deny all users
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 
@@ -131,9 +133,36 @@ array('deny',  // deny all users
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Contract');
+		if(Yii::app()->user->isRoot){
+			$dataProvider=new CActiveDataProvider('Contract');
+		}elseif ( Yii::app()->user->isManager ) {
+			$criteria = new CDbCriteria();
+			$criteria->with = array(
+					'creater' => array(
+							'on'=>"creater.group_id = :group_id  AND creater.id = t.created_by",
+							'joinType' => 'INNER JOIN',
+					),
+			);
+			$criteria->params = array(':group_id'=>Yii::app()->user->group_id);
+			$dataProvider = new CActiveDataProvider(
+					'Contract', array(
+							'criteria'=> $criteria,
+					)
+			);
+		}else{
+			$dataProvider = new CActiveDataProvider(
+					'Contract', array(
+							'criteria'=> array(
+									'condition' => "created_by = :user_id",
+									'params'=>array('user_id'=>Yii::app()->user->id),
+							),
+					)
+			);
+
+		}
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+				'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -148,7 +177,7 @@ array('deny',  // deny all users
 			$model->attributes=$_GET['Contract'];
 
 		$this->render('admin',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 
@@ -205,7 +234,7 @@ array('deny',  // deny all users
 			$customerId = $_GET['cid'];
 		else
 			if (isset($_POST['cid']))
-				$customerId = $_POST['cid'];
+			$customerId = $_POST['cid'];
 
 		$this->loadCustomer($customerId);
 

@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Customers',
+	'客户',
 );
 
 $this->menu=array(
-	array('label'=>'Create Customer', 'url'=>array('create')),
-	array('label'=>'Manage Customer', 'url'=>array('admin')),
+	array('label'=>'新增客户', 'url'=>array('create')),
+	array('label'=>'管理客户', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Customers</h1>
+<h1>客户</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

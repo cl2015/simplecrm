@@ -20,7 +20,13 @@
 		<?php echo $form->textField($model,'name',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
-
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'products'); ?>
+		<?php echo $form->checkBoxList($model,'products',$model->getProductsOptions(),array('separator' => '', 'template' => '<li class="q6" style="list-style: none outside none;display:block;float:left; width:140px;">{input} {label}</li>&nbsp;&nbsp;', 'labelOptions' => array('style' => 'display:inline;'))); ?>
+		<?php echo $form->error($model,'products'); ?>
+	</div>
+	<div style="clear:both"></div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'phone'); ?>
 		<?php echo $form->textField($model,'phone',array('size'=>60,'maxlength'=>128)); ?>

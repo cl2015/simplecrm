@@ -5,9 +5,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Login</h1>
+<h1>登录</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+<p></p>
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -30,9 +30,6 @@ $this->breadcrumbs=array(
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <tt>demo/demo</tt> or <tt>admin/admin</tt>.
-		</p>
 	</div>
 
 	<div class="row rememberMe">

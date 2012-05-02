@@ -43,14 +43,14 @@ class Property extends TrackStarActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('code, address, area, unit_price, age', 'required'),
-			array('created_by, updated_by', 'numerical', 'integerOnly'=>true),
-			array('code, area, unit_price, age', 'length', 'max'=>64),
-			array('address', 'length', 'max'=>128),
-			array('created_at, updated_at', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, code, address, area, unit_price, age, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
+				array('code, region,address, area, unit_price, age', 'required'),
+				array('created_by, updated_by', 'numerical', 'integerOnly'=>true),
+				array('code, area, unit_price, age', 'length', 'max'=>64),
+				array('address', 'length', 'max'=>128),
+				array('created_at, updated_at', 'safe'),
+				// The following rule is used by search().
+				// Please remove those attributes that should not be searched.
+				array('id, code, address, area, unit_price, age, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +62,8 @@ class Property extends TrackStarActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+				'creater' => array(self::BELONGS_TO,'User','created_by'),
+				'updater' => array(self::BELONGS_TO,'User','updated_by'),
 		);
 	}
 
@@ -71,16 +73,17 @@ class Property extends TrackStarActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'code' => 'Code',
-			'address' => 'Address',
-			'area' => 'Area',
-			'unit_price' => 'Unit Price',
-			'age' => 'Age',
-			'created_at' => 'Created At',
-			'created_by' => 'Created By',
-			'updated_at' => 'Updated At',
-			'updated_by' => 'Updated By',
+				'id' => 'ID',
+				'code' => '编号',
+				'region' =>'区县',
+				'address' => '地址',
+				'area' => '面积',
+				'unit_price' => '单价',
+				'age' => '房龄',
+				'created_at' => '创建时间',
+				'created_by' => '创建人',
+				'updated_at' => '更新时间',
+				'updated_by' => '更新人',
 		);
 	}
 
@@ -107,7 +110,31 @@ class Property extends TrackStarActiveRecord
 		$criteria->compare('updated_by',$this->updated_by);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+				'criteria'=>$criteria,
 		));
+	}
+
+	public function getRegions(){
+		return array(
+				''=>'',
+				'东城'=>'东城',
+				'西城'=>'西城',
+				'崇文'=>'崇文',
+				'宣武'=>'宣武',
+				'海淀'=>'海淀',
+				'朝阳'=>'朝阳',
+				'丰台'=>'丰台',
+				'石景山'=>'石景',
+				'通州'=>'通州',
+				'顺义'=>'顺义',
+				'平谷'=>'平谷',
+				'怀柔'=>'怀柔',
+				'房山'=>'房山',
+				'门头沟'=>'门头',
+				'大兴'=>'大兴',
+				'昌平'=>'昌平',
+				'延庆'=>'延庆',
+				'密云'=>'密云',
+		);
 	}
 }
