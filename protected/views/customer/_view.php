@@ -11,6 +11,9 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
 	<?php echo CHtml::encode($data->name); ?>
 	<br />
+	<b><?php echo CHtml::encode($data->getAttributeLabel('products')); ?>:</b>
+	<?php echo CHtml::encode(implode(',',$data->products)); ?>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('phone')); ?>:</b>
 	<?php echo CHtml::encode($data->phone); ?>
@@ -30,7 +33,7 @@
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('created_by')); ?>:</b>
-	<?php echo CHtml::encode($data->created_by); ?>
+	<?php echo CHtml::encode($data->creater->name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_at')); ?>:</b>
@@ -38,7 +41,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_by')); ?>:</b>
-	<?php echo CHtml::encode($data->updated_by); ?>
+	<?php echo CHtml::encode($data->updater->name); ?>
 	<br />
 
 	*/ ?>

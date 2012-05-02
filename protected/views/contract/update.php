@@ -1,18 +1,18 @@
 <?php
 $this->breadcrumbs=array(
-	'Contracts'=>array('index'),
+	'合同'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'更新合同',
 );
 
 $this->menu=array(
-	array('label'=>'List Contract', 'url'=>array('index')),
+	array('label'=>'合同列表', 'url'=>array('index')),
 	//array('label'=>'Create Contract', 'url'=>array('create')),
-	array('label'=>'View Contract', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Contract', 'url'=>array('admin')),
+	array('label'=>'查看合同', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'管理合同', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Contract <?php echo $model->id; ?></h1>
+<h1>更新合同 <?php echo $model->id; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

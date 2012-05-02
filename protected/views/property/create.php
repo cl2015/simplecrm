@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Properties'=>array('index'),
-	'Create',
+	'物业'=>array('index'),
+	'新增',
 );
 
 $this->menu=array(
-	array('label'=>'List Property', 'url'=>array('index')),
-	array('label'=>'Manage Property', 'url'=>array('admin')),
+	array('label'=>'物业列表', 'url'=>array('index')),
+	array('label'=>'管理物业', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Property</h1>
+<h1>新增物业</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

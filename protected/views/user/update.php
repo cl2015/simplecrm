@@ -6,10 +6,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'View User', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	array('label'=>'员工列表', 'url'=>array('index')),
+	array('label'=>'新增员工', 'url'=>array('create')),
+	array('label'=>'查看员工', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'管理员工', 'url'=>array('admin')),
 );
 ?>
 

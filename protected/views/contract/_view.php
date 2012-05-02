@@ -24,9 +24,8 @@
 	<?php echo CHtml::encode($data->created_at); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('created_by')); ?>:</b>
-	<?php echo CHtml::encode($data->created_by); ?>
+	<?php echo CHtml::encode($data->creater->username); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_at')); ?>:</b>
@@ -34,9 +33,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_by')); ?>:</b>
-	<?php echo CHtml::encode($data->updated_by); ?>
+	<?php echo CHtml::encode($data->updater->username); ?>
 	<br />
-
-	*/ ?>
 
 </div>

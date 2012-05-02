@@ -14,6 +14,16 @@
 		<?php echo $form->label($model,'username'); ?>
 		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>64)); ?>
 	</div>
+	
+	<div class="row">
+		<?php echo $form->label($model,'role_id'); ?>
+		<?php echo $form->dropDownList($model,'role_id',$model->getRoles()); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->label($model,'group_id'); ?>
+		<?php echo $form->dropDownList($model,'group_id',$model->getGroups()); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'code'); ?>

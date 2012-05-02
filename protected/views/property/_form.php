@@ -14,6 +14,12 @@
 		<?php echo $form->textField($model,'code',array('size'=>60,'maxlength'=>64)); ?>
 		<?php echo $form->error($model,'code'); ?>
 	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'region'); ?>
+		<?php echo $form->dropDownList($model,'region',$model->getRegions()); ?>
+		<?php echo $form->error($model,'region'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'address'); ?>

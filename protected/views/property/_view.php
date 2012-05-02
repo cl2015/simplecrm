@@ -7,6 +7,10 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('code')); ?>:</b>
 	<?php echo CHtml::encode($data->code); ?>
 	<br />
+	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('region')); ?>:</b>
+	<?php echo CHtml::encode($data->region); ?>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('address')); ?>:</b>
 	<?php echo CHtml::encode($data->address); ?>

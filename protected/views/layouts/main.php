@@ -15,6 +15,19 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-31356310-1']);
+	  _gaq.push(['_setDomainName', '1anjie.com']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
 </head>
 
 <body>
@@ -31,7 +44,7 @@
 				array('label'=>'主页', 'url'=>array('/site/index')),
 				array('label'=>'客户信息管理', 'url'=>array('customer/admin')),
 				array('label'=>'物业信息管理', 'url'=>array('property/index')),
-				array('label'=>'合同信息管理', 'url'=>array('contract/index')),
+				array('label'=>'合同信息管理', 'url'=>array('contract/admin')),
 				array('label'=>'员工信息管理', 'url'=>array('user/index')),
 				array('label'=>'登录', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'退出 ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

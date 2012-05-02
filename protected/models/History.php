@@ -41,13 +41,13 @@ class History extends TrackStarActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('contract_id, remark', 'required'),
-			array('status, created_by, updated_by', 'numerical', 'integerOnly'=>true),
-			array('contract_id', 'length', 'max'=>10),
-			array('created_at, updated_at', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, contract_id, status, remark, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
+				array('contract_id, remark', 'required'),
+				array('status, created_by, updated_by', 'numerical', 'integerOnly'=>true),
+				array('contract_id', 'length', 'max'=>10),
+				array('created_at, updated_at', 'safe'),
+				// The following rule is used by search().
+				// Please remove those attributes that should not be searched.
+				array('id, contract_id, status, remark, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +59,10 @@ class History extends TrackStarActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+				'statuses' => array(self::BELONGS_TO,'Status','status'),
+				'creater' => array(self::BELONGS_TO, 'User','created_by'),
+				'updater' => array(self::BELONGS_TO, 'User','updated_by'),
+				'contract' => array(self::BELONGS_TO, 'Contract','contract_id'),
 		);
 	}
 
@@ -68,14 +72,14 @@ class History extends TrackStarActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'contract_id' => 'Contract',
-			'status' => 'Status',
-			'remark' => 'Remark',
-			'created_at' => 'Created At',
-			'created_by' => 'Created By',
-			'updated_at' => 'Updated At',
-			'updated_by' => 'Updated By',
+				'id' => 'ID',
+				'contract_id' => '合同',
+				'status' => '状态',
+				'remark' => '说明',
+				'created_at' => '创建时间',
+				'created_by' => '创建人',
+				'updated_at' => '更新时间',
+				'updated_by' => '更新人',
 		);
 	}
 
@@ -100,7 +104,27 @@ class History extends TrackStarActiveRecord
 		$criteria->compare('updated_by',$this->updated_by);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+				'criteria'=>$criteria,
 		));
+	}
+	public static function findRecentHistories($limit=10, $contractId=null)
+	{
+		if($contractId != null)
+		{
+			return self::model()->findAll(
+							array(
+									'condition'=>'contract_id='.$contractId,
+									'order'=>'t.created_by DESC',
+									'limit'=>$limit,
+							));
+		}
+		else
+		{
+			//get all history across all projects
+			return self::model()->findAll(array(
+					'order'=>'t.created_by DESC',
+					'limit'=>$limit,
+			));
+		}
 	}
 }

@@ -10,9 +10,7 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'contract_id'); ?>
-		<?php echo $form->textField($model,'contract_id',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'contract_id'); ?>
+		<?php echo $form->hiddenField($model,'contract_id',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
 	<div class="row">

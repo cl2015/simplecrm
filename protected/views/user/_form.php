@@ -22,6 +22,18 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'role_id'); ?>
+		<?php echo $form->dropDownList($model,'role_id',$model->getRoles()); ?>
+		<?php echo $form->error($model,'role_id'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'group_id'); ?>
+		<?php echo $form->dropDownList($model,'group_id',$model->getGroups()); ?>
+		<?php echo $form->error($model,'group_id'); ?>
+	</div>
+	
+	<div class="row">
 		<?php echo $form->labelEx($model,'code'); ?>
 		<?php echo $form->textField($model,'code',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'code'); ?>

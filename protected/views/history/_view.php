@@ -5,11 +5,11 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('contract_id')); ?>:</b>
-	<?php echo CHtml::encode($data->contract_id); ?>
+	<?php echo CHtml::encode($data->contract->contract_number); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
-	<?php echo CHtml::encode($data->status); ?>
+	<?php echo CHtml::encode($data->statuses->status); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('remark')); ?>:</b>
@@ -21,7 +21,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('created_by')); ?>:</b>
-	<?php echo CHtml::encode($data->created_by); ?>
+	<?php echo CHtml::encode($data->creater->username); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_at')); ?>:</b>
