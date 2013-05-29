@@ -20,6 +20,7 @@ class Contract extends TrackStarActiveRecord
 	private $history;
 	private $_oldStatuses = array();
 	public $remark;
+	public $customer_search;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -54,7 +55,7 @@ class Contract extends TrackStarActiveRecord
 				array('status','flowCheck','check'=>true),
 				// The following rule is used by search().
 				// Please remove those attributes that should not be searched.
-				array('id, customer_id, amount, contract_number,content, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
+				array('id, customer_id, amount, contract_number,content, created_at, created_by, updated_at, updated_by, customer_search', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -91,6 +92,7 @@ class Contract extends TrackStarActiveRecord
 				'created_by' => '创建人',
 				'updated_at' => '更新日期',
 				'updated_by' => '更新人',
+				'customer_search' => '客户',
 		);
 	}
 
@@ -104,6 +106,7 @@ class Contract extends TrackStarActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+		$criteria->with = array('customer');
 
 		$criteria->compare('t.id',$this->id,true);
 		$criteria->compare('t.customer_id',$this->customer_id);
@@ -114,7 +117,8 @@ class Contract extends TrackStarActiveRecord
 		$criteria->compare('t.created_by',$this->created_by);
 		$criteria->compare('t.updated_at',$this->updated_at,true);
 		$criteria->compare('t.updated_by',$this->updated_by);
-
+		$criteria->compare( 'customer.name', $this->customer_search, true );
+	
 		if(Yii::app()->user->isRoot){
 				
 		}elseif ( Yii::app()->user->isManager ) {
@@ -129,6 +133,15 @@ class Contract extends TrackStarActiveRecord
 		}
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
+				'sort'=>array(
+						'attributes'=>array(
+								'customer_search'=>array(
+										'asc'=>'customer.name',
+										'desc'=>'customer.name DESC',
+								),
+						'*',
+						),
+				),
 		));
 	}
 	/*

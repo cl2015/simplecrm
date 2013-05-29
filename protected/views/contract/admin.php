@@ -39,7 +39,10 @@ Yii::app()->clientScript->registerScript('search', "
 		'filter'=>$model,
 		'columns'=>array(
 				'id',
-				'customer.name',
+				array(
+	                 'name'=>'customer_search',
+	                 'value'=>'$data["customer"]["name"]',
+	            ), 
 				'amount',
 				'contract_number',
 				/*

@@ -1,0 +1,7 @@
+
+.DS_Store
+
+.project
+
+assets/*
+protected/runtime/application.log
